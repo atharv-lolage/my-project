@@ -1,7 +1,7 @@
 import path from 'path';
 
 export default ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
+  const client = env('DATABASE_CLIENT', 'postgres'); // Default to postgres if not set
 
   const connections = {
     mysql: {
@@ -24,12 +24,12 @@ export default ({ env }) => {
     },
     postgres: {
       connection: {
-        connectionString: env('DATABASE_URL'),
+        connectionString: env('DATABASE_URL'), // You can use either this or the individual params below
         host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
+        database: env('DATABASE_NAME', 'myproject'), // Updated to your database name
+        user: env('DATABASE_USERNAME', 'atharv-lolage'),
+        password: env('DATABASE_PASSWORD', 'loginpass'),
         ssl: env.bool('DATABASE_SSL', false) && {
           key: env('DATABASE_SSL_KEY', undefined),
           cert: env('DATABASE_SSL_CERT', undefined),

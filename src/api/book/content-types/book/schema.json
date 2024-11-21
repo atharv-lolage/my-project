@@ -1,0 +1,101 @@
+{
+  "kind": "collectionType",
+  "collectionName": "books",
+  "info": {
+    "singularName": "book",
+    "pluralName": "books",
+    "displayName": "Book",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 250
+    },
+    "author": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50,
+      "minLength": 1
+    },
+    "condition": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "Good",
+        "Fine",
+        "Bad"
+      ],
+      "default": "Fine",
+      "required": true
+    },
+    "price": {
+      "type": "integer"
+    },
+    "image": {
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Fiction",
+        "Non-fiction",
+        "Science",
+        "Fantasy",
+        "Biography",
+        "Self-help",
+        "History",
+        "Technology",
+        "Romance",
+        "Thriller",
+        "Mystery",
+        "Horror",
+        "Adventure",
+        "Poetry",
+        "Cookbook",
+        "Children's",
+        "Art",
+        "Health",
+        "Philosophy",
+        "Politics",
+        "Religion",
+        "Travel",
+        "Business",
+        "Sports",
+        "Comics",
+        "Humor",
+        "True Crime",
+        "Education",
+        "Graphic Novel",
+        "Science Fiction",
+        "Historical Fiction",
+        "Classic",
+        "Young Adult",
+        "Others"
+      ],
+      "default": "Others"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "books"
+    }
+  }
+}
